@@ -21,6 +21,7 @@ class CompraForm(forms.Form):
         decimal_places=2,
         required=True
     )
+    
     cliente = forms.ModelChoiceField(
         queryset=Cliente.objects.all(),
         label="Cliente",
@@ -36,6 +37,5 @@ class CompraForm(forms.Form):
     
     def __init__(self, *args, **kwargs):
         super(CompraForm, self).__init__(*args, **kwargs)
-        # Personalizar cómo se muestran los clientes y tiendas en el selector
         self.fields['cliente'].label_from_instance = lambda obj: f"{obj.id_cliente} - {obj.nombre}"
         self.fields['tienda'].label_from_instance = lambda obj: f"{obj.id_tienda} - {obj.nombre}"

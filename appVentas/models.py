@@ -9,6 +9,10 @@ class Cliente(models.Model):
     class Meta:
         managed = False
         db_table = 'clientes'
+    
+    # ⭐ AGREGAR ESTO
+    def __str__(self):
+        return f"{self.id_cliente} - {self.nombre}"
 
 class Tienda(models.Model):
     id_tienda = models.AutoField(primary_key=True)
@@ -18,6 +22,10 @@ class Tienda(models.Model):
     class Meta:
         managed = False
         db_table = 'tiendas'
+    
+    # ⭐ AGREGAR ESTO
+    def __str__(self):
+        return f"{self.id_tienda} - {self.nombre}"
 
 class Compra(models.Model):
     id_compra = models.AutoField(primary_key=True)
@@ -41,3 +49,6 @@ class Compra(models.Model):
         managed = False
         db_table = 'compras'
     
+    # ⭐ OPCIONAL
+    def __str__(self):
+        return f"Compra #{self.id_compra} - {self.monto}"
