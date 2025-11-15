@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>🏪 Lista de Tiendas</h1>
+
+<p style="margin-bottom: 20px;">
+    <a href="{% url 'crear_tienda' %}" class="btn">➕ Nueva Tienda</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tienda in tiendas %}
+        <tr>
+            <td>{{ tienda.id_tienda }}</td>
+            <td>{{ tienda.nombre }}</td>
+            <td>{{ tienda.direccion }}</td>
+            <td>
+                <a href="{% url 'actualizar_tienda' tienda.id_tienda %}" class="btn btn-edit">✏️ Modificar</a>
+                <a href="{% url 'eliminar_tienda' tienda.id_tienda %}" class="btn btn-delete" 
+                   onclick="return confirm('¿Está seguro de eliminar esta tienda?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="text-align: center; padding: 40px; color: #999;">
+                No hay tiendas registradas
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

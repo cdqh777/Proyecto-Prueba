@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>🏪 Registrar Nueva Tienda</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">💾 Registrar</button>
+    <a href="{% url 'lista_tiendas' %}" class="btn btn-delete">❌ Cancelar</a>
+</form>
+{% endblock %}
